@@ -79,6 +79,7 @@ void main_fn() {
   STOP_STATS();
 
   EXIT_STATS_LOOP();
+  printf("[%d] MAC/cycle: %.4f\n", pi_core_id(), (double)(M1*K1*N1)/(_cycles/REPEAT));
 
 #ifdef DEBUG  
   matrix_check(matC);
