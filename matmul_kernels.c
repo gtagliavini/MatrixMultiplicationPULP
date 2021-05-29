@@ -28,7 +28,7 @@ void __attribute__ ((noinline)) matMul(int * __restrict__ pSrcA, int  * __restri
         }
     }
 
-    pi_cl_team_barrier(0);
+    pi_cl_team_barrier();
 
 
 }

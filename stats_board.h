@@ -11,6 +11,9 @@
   unsigned long _tcdmcont = 0; \
   unsigned long _ldstall = 0; \
   unsigned long _imiss = 0; \
+  unsigned long _stext = 0; \
+  unsigned long _jrstall = 0; \
+  unsigned long _branch = 0; \
   for(int _k=0; _k<HOTTING+6*REPEAT; _k++) { \
     if (_k >= HOTTING) \
     { \
