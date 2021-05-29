@@ -6,7 +6,7 @@ APP_CFLAGS += -O3 -g3
 
 ifeq ($(findstring gcc,$(PULP_CC)),gcc)
 	#GCC
-	APP_CFLAGS += -mno-memcpy -mhwloopalign
+	APP_CFLAGS += #-mno-memcpy -mhwloopalign
 else
 	#Clang
 	APP_CFLAGS += 
