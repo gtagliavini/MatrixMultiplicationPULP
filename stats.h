@@ -51,16 +51,16 @@
 
 #define EXIT_STATS_LOOP()  \
     } \
-    printf("[%d] num_cycles: %lu\n", pi_core_id(), _cycles/REPEAT); \
-    printf("[%d] num_instr_miss: %lu\n", pi_core_id(), _imiss/REPEAT); \
-    printf("[%d] num_ext_load: %lu\n", pi_core_id(), _ldext/REPEAT); \
-    printf("[%d] num_ext_store: %lu\n", pi_core_id(), _stext/REPEAT); \
-    printf("[%d] num_tcdm_contentions: %lu\n", pi_core_id(), _tcdmcont/REPEAT); \
-    printf("[%d] num_instrs: %lu\n", pi_core_id(), _instr/REPEAT); \
-    printf("[%d] num_active_cycles: %lu\n", pi_core_id(), _active/REPEAT); \
-    printf("[%d] num_load_stalls: %lu\n", pi_core_id(), _ldstall/REPEAT); \
-    printf("[%d] num_jumpr_stalls: %lu\n", pi_core_id(), _jrstall/REPEAT); \
-    printf("[%d] num_branch: %lu\n", pi_core_id(), _branch/REPEAT);
+    printf("[%d] : num_cycles: %lu\n", pi_core_id(), _cycles/REPEAT); \
+    printf("[%d] : num_instr_miss: %lu\n", pi_core_id(), _imiss/REPEAT); \
+    printf("[%d] : num_ext_load: %lu\n", pi_core_id(), _ldext/REPEAT); \
+    printf("[%d] : num_ext_store: %lu\n", pi_core_id(), _stext/REPEAT); \
+    printf("[%d] : num_tcdm_contentions: %lu\n", pi_core_id(), _tcdmcont/REPEAT); \
+    printf("[%d] : num_instrs: %lu\n", pi_core_id(), _instr/REPEAT); \
+    printf("[%d] : num_active_cycles: %lu\n", pi_core_id(), _active/REPEAT); \
+    printf("[%d] : num_load_stalls: %lu\n", pi_core_id(), _ldstall/REPEAT); \
+    printf("[%d] : num_jumpr_stalls: %lu\n", pi_core_id(), _jrstall/REPEAT); \
+    printf("[%d] : num_branch: %lu\n", pi_core_id(), _branch/REPEAT);
 
 #else // STATS
 

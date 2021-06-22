@@ -79,7 +79,7 @@ void main_fn() {
   STOP_STATS();
 
 #ifdef STATS
-  if(_k==HOTTING+REPEAT-1) printf("MACs: %d\n", (M1*K1*N1));
+  if(_k==HOTTING+REPEAT-1) printf("MACs=%d\n", (M1*K1*N1));
 #endif  
   EXIT_STATS_LOOP();
 
