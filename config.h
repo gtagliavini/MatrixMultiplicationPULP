@@ -7,7 +7,7 @@
 #define N1 32
 
 // 16 means float16
-#define DATA_TYPE 16
+#define DATA_TYPE ew
 
 // Floating-point values
 #define IS_FLOAT 1
@@ -23,16 +23,17 @@
 
 
 #if DATA_TYPE == 16
-typedef float16alt Scalar;
-#undef USE_INTRINSICS
-typedef float16alt ScalarResult;
+  typedef float16 Scalar;
+  #undef USE_INTRINSICS
+  typedef float16 ScalarResult;
 #else
-typedef float Scalar;
-#undef USE_INTRINSICS
-typedef float ScalarResult;
+  typedef float Scalar;
+  #undef USE_INTRINSICS
+  typedef float ScalarResult;
 #endif
 
-#else
+#else // ISFLOAT
+
 typedef signed int ScalarResult;
 
 #if DATA_TYPE == 16
@@ -42,11 +43,11 @@ typedef signed short Vector __attribute__((vector_size (4)));
 #define Dotp(a, b)       __builtin_pulp_dotsp2(a, b)
 #define SHIFT_FACTOR 1
 #elif DATA_TYPE == 8
-typedef signed char Scalar;
-typedef signed char Vector __attribute__((vector_size (4)));
-#define SumDotp(a, b, c) __builtin_pulp_sdotsp4(a, b, c)
-#define Dotp(a, b)       __builtin_pulp_dotsp4(a, b)
-#define SHIFT_FACTOR 2
+  typedef signed char Scalar;
+  typedef signed char Vector __attribute__((vector_size (4)));
+  #define SumDotp(a, b, c) __builtin_pulp_sdotsp4(a, b, c)
+  #define Dotp(a, b)       __builtin_pulp_dotsp4(a, b)
+  #define SHIFT_FACTOR 2
 #else
 typedef signed int Scalar;
 #undef USE_INTRINSICS

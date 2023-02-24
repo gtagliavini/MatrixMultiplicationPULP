@@ -1,29 +1,21 @@
 #include "pmsis.h"
 
 #include "stats.h"
+#include "config.h"
 
-//#define DEBUG
-
-#define M1 32
-#define N1 32
-#define K1 32
-
-typedef int Scalar;
-typedef int ScalarResult;
 
 PI_L1 Scalar matA[M1*K1] __attribute__ ((aligned (4)));
 PI_L1 Scalar matB[K1*N1] __attribute__ ((aligned (4)));
 PI_L1 ScalarResult  matC[M1*N1] __attribute__ ((aligned (4)));
 
 
-void __attribute__ ((noinline)) matMul(int * __restrict__ pSrcA, int  * __restrict__ pSrcB, int * __restrict__ pDstC, int M, int N, int O);
 
 // Helper functions
 
 void __attribute__ ((noinline)) matrix_init(Scalar * __restrict__ A, Scalar * __restrict__ B, ScalarResult * __restrict__ C) {
   for (int i = 0; i < M1; i++) {
     for (int j = 0; j < K1; j++) {
-      A[i*K1+j] = (int)(j+1);
+      A[i*K1+j] = j+1;
     }
   }
 
@@ -86,7 +78,10 @@ void main_fn() {
   //printf("[%d] MAC/cycle: %.4f\n", pi_core_id(), (double)(M1*K1*N1)/(_cycles/REPEAT));
 
 #ifdef DEBUG  
-  matrix_check(matC);
+  if (pi_core_id() == 0) {
+    matrix_check(matC);
+    printf("Check completed\n");
+  }
 #endif  
 
 }
